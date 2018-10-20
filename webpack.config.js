@@ -4,7 +4,10 @@ const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-    entry: "./src/vue-smooth-reflow.ts",
+    entry: [
+        "./src/polyfills",
+        "./src/vue-smooth-reflow.ts"
+    ],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'vue-smooth-reflow.min.js',
@@ -15,7 +18,7 @@ module.exports = {
         // globalObject: "typeof self !== 'undefined' ? self : this"
     },
     resolve: {
-        extensions: [".ts", ".tsx"]
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     module: {
         rules: [
