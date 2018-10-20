@@ -1,6 +1,7 @@
 .idea
 dist-report
 tsconfig.json
+tslint.json
 webpack.config.js
 src/**/*
 !src/interfaces/**/*.d.ts

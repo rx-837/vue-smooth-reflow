@@ -1,9 +1,9 @@
-import Vue from 'vue';
-import { Options } from './interfaces';
+import Vue from "vue"
+import { IOptions } from "./interfaces"
 
-declare module 'vue/types/vue' {
+declare module "vue/types/vue" {
   interface Vue {
-    $smoothReflow(options?: Options): void;
-    $unsmoothReflow(options?: Options): void;
+    $smoothReflow(options?: IOptions): void
+    $unsmoothReflow(options?: IOptions): void
   }
 }

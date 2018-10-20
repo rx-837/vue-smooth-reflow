@@ -1,4 +1,4 @@
-export interface TransitionEvent {
+export interface ITransitionEvent {
   transitionEvent?: {
     selector?: string;
     propertyName?: string;

@@ -8,58 +8,60 @@
  * 5. If the event matches the user's event filters, Go back to #1
  */
 
-import { SmoothElement } from "./classes";
-import { findRegisteredEl, flushRemoved, registerElement, unregisterElement } from "./utils";
+import { SmoothElement } from "./classes"
+import { findRegisteredEl, flushRemoved, registerElement, unregisterElement } from "./utils"
 
 if (!Element.prototype.matches) {
-  Element.prototype.matches = (Element.prototype as any).msMatchesSelector;
+  Element.prototype.matches = (Element.prototype as any).msMatchesSelector
 }
 
 const mixin = {
   methods: {
     // TODO Options ?
     $smoothReflow(options) {
-      const _registerElement = registerElement.bind(this);
-      if (Array.isArray(options))
-        options.forEach(_registerElement);
-      else
-        _registerElement(options);
+      const _registerElement = registerElement.bind(this)
+      if (Array.isArray(options)) {
+        options.forEach(_registerElement)
+      } else {
+        _registerElement(options)
+      }
     },
     // TODO Options ?
     $unsmoothReflow(options) {
-      const _unregisterElement = unregisterElement.bind(this);
-      if (Array.isArray(options))
-        options.forEach(_unregisterElement);
-      else
-        _unregisterElement(options);
-    },
+      const _unregisterElement = unregisterElement.bind(this)
+      if (Array.isArray(options)) {
+        options.forEach(_unregisterElement)
+      } else {
+        _unregisterElement(options)
+      }
+    }
   },
   beforeMount() {
-    this._smoothElements = [];
+    this._smoothElements = []
 
     this._endListener = (event) => {
       for (const smoothEl of (this._smoothElements as Array<SmoothElement>)) {
-        smoothEl.endListener(event);
+        smoothEl.endListener(event)
       }
-    };
+    }
   },
   mounted() {
-    this.$el.addEventListener('transitionend', this._endListener, {passive: true});
+    this.$el.addEventListener("transitionend", this._endListener, {passive: true})
   },
   destroyed() {
-    this.$el.removeEventListener('transitionend', this._endListener, {passive: true});
+    this.$el.removeEventListener("transitionend", this._endListener, {passive: true})
   },
   beforeUpdate() {
     // The component $el can be null during mounted, if it's hidden by a falsy v-if
     // Duplicate event listeners are ignored, so it's safe to add this listener multiple times.
-    this.$el.addEventListener('transitionend', this._endListener, {passive: true});
-    flushRemoved(this);
+    this.$el.addEventListener("transitionend", this._endListener, {passive: true})
+    flushRemoved(this)
     // Retrieve component element on demand
     // It could have been hidden by v-if/v-show
     for (const smoothEl of (this._smoothElements as Array<SmoothElement>)) {
-      const $smoothEl = findRegisteredEl(this.$el, smoothEl.getElement());
-      smoothEl.setSmoothElement($smoothEl);
-      smoothEl.setBeforeValues();
+      const $smoothEl = findRegisteredEl(this.$el, smoothEl.getElement())
+      smoothEl.setSmoothElement($smoothEl)
+      smoothEl.setBeforeValues()
     }
   },
   updated() {
@@ -67,13 +69,13 @@ const mixin = {
       // Retrieve component element on demand
       // It could have been hidden by v-if/v-show
       for (const smoothEl of (this._smoothElements as Array<SmoothElement>)) {
-        const $smoothEl = findRegisteredEl(this.$el, smoothEl.getElement());
-        smoothEl.setSmoothElement($smoothEl);
-        smoothEl.doSmoothReflow();
+        const $smoothEl = findRegisteredEl(this.$el, smoothEl.getElement())
+        smoothEl.setSmoothElement($smoothEl)
+        smoothEl.doSmoothReflow()
       }
-      flushRemoved(this);
-    });
+      flushRemoved(this)
+    })
   }
-};
+}
 
-export default mixin;
+export default mixin
