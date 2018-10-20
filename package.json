@@ -20,7 +20,7 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
   },
-  "types": "dist/index.ts",
+  "types": "src/index.ts",
   "module": "dist/vue-smooth-reflow.min.js",
   "main": "dist/vue-smooth-reflow.min.js",
   "unpkg": "dist/vue-smooth-reflow.min.js",
