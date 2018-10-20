@@ -4,5 +4,5 @@ node_modules/
 browsertests/
 *.map
 .idea
-*.d.ts
-!vue.d.ts
+src/**/*.d.ts
+!src/vue.d.ts
