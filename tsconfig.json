@@ -1,14 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "outDir": "./dist",
     "sourceMap": true,
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "dom",
-      "es7"
+      "es2017",
+      "dom"
     ]
   },
   "exclude": [
-    "node_modules"
+    "./node_modules"
   ]
 }
