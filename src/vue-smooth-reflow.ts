@@ -9,6 +9,7 @@
  */
 
 import { SmoothElement } from "./classes"
+import { IOptions } from "./interfaces"
 import { findRegisteredEl, flushRemoved, registerElement, unregisterElement } from "./utils"
 
 if (!Element.prototype.matches) {
@@ -17,8 +18,7 @@ if (!Element.prototype.matches) {
 
 const mixin = {
   methods: {
-    // TODO Options ?
-    $smoothReflow(options) {
+    $smoothReflow(options: IOptions | Array<IOptions>) {
       const _registerElement = registerElement.bind(this)
       if (Array.isArray(options)) {
         options.forEach(_registerElement)
@@ -26,8 +26,7 @@ const mixin = {
         _registerElement(options)
       }
     },
-    // TODO Options ?
-    $unsmoothReflow(options) {
+    $unsmoothReflow(options: IOptions | Array<IOptions>) {
       const _unregisterElement = unregisterElement.bind(this)
       if (Array.isArray(options)) {
         options.forEach(_unregisterElement)

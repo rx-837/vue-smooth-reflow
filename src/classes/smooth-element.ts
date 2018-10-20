@@ -69,8 +69,8 @@ export class SmoothElement {
     this.state = to
   }
 
-  // TODO
-  public endListener(event): void {
+  // TODO add type of event
+  public endListener(event: any): void {
     const {$smoothEl, properties} = this
     const $targetEl = event.target
     // Transition on smooth element finished
