@@ -1,6 +1,6 @@
-import { TransitionEvent } from "./transition-event"
+import { ITransitionEvent } from "./transition-event"
 
-export interface IOptions extends TransitionEvent {
+export interface IOptions extends ITransitionEvent {
   el?: HTMLElement | string
   property?: string | Array<string>
   transition?: string
