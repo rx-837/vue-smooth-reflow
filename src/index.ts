@@ -1,3 +1,3 @@
-import { VueSmoothReflow } from "./vue-smooth-reflow"
-export * from "./vue"
+import VueSmoothReflow from "./vue-smooth-reflow"
 export default VueSmoothReflow
+export * from "./vue"

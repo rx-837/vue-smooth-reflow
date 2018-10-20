@@ -187,19 +187,19 @@ export class SmoothElement {
     // Transition is now started.
   }
 
-  private hasRegisteredEventEmitter() {
+  private hasRegisteredEventEmitter(): boolean {
     const {transitionEvent} = this.options
     return !isNull(transitionEvent) && Object.keys(transitionEvent).length > 0
   }
 
   // Check if we should perform doSmoothReflow() after a transitionend event.
   private isRegisteredEventEmitter($smoothEl, event): boolean {
-    const $targetEl = event.target
-    const {selector, propertyName} = this.options.transitionEvent
-
     if (!this.hasRegisteredEventEmitter()) {
       return false
     }
+
+    const $targetEl = event.target
+    const {selector, propertyName} = this.options.transitionEvent
 
     if (!isNull(propertyName) && !isUndefined(propertyName) && propertyName !== event.propertyName) {
       return false

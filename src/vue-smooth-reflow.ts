@@ -16,7 +16,7 @@ if (!Element.prototype.matches) {
   Element.prototype.matches = (Element.prototype as any).msMatchesSelector
 }
 
-export const VueSmoothReflow = {
+export default {
   methods: {
     $smoothReflow(options: IOptions | Array<IOptions>) {
       const _registerElement = registerElement.bind(this)
