@@ -146,7 +146,7 @@ export class SmoothElement {
     // TODO: This listener might be necessary if the smoothEl is not rendered inside the component
     // for example if smoothEl is inside a <template></template>
     // https://github.com/guanzo/vue-smooth-reflow/issues/1
-    // $smoothEl.addEventListener('transitionend', this.endListener, { passive: true })
+    // $smoothEl.addEventListener("transitionend", this.endListener, { passive: true })
     const {beforeRect, properties, options, overflowX, overflowY, debug} = this
 
     this.transitionTo(STATE.ACTIVE)
@@ -209,7 +209,7 @@ export class SmoothElement {
       return false
     }
 
-    // If 'transform' isn't a registered property,
+    // If "transform" isn't a registered property,
     // then we don't need to act on any transitionend
     // events that occur outside the $smoothEl
     if (this.properties.indexOf("transform") === -1) {
@@ -264,7 +264,7 @@ export class SmoothElement {
     this.transitionTo(STATE.INACTIVE)
   }
 
-  private scheduleRemoval(): void {
+  public scheduleRemoval(): void {
     this.isRemoved = true
   }
 

@@ -1,5 +1,5 @@
 // Converts DOMRect into plain object.
-// Overflow is temporarily forced to 'hidden' to prevent margin collapse,
+// Overflow is temporarily forced to "hidden" to prevent margin collapse,
 // and receive an accurate height/width value.
 export interface IRect {
   top?: number
