@@ -16,7 +16,7 @@ if (!Element.prototype.matches) {
   Element.prototype.matches = (Element.prototype as any).msMatchesSelector
 }
 
-const mixin = {
+export const VueSmoothReflow = {
   methods: {
     $smoothReflow(options: IOptions | Array<IOptions>) {
       const _registerElement = registerElement.bind(this)
@@ -76,5 +76,3 @@ const mixin = {
     })
   }
 }
-
-export default mixin
